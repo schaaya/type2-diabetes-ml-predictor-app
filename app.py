@@ -208,7 +208,7 @@ with tab_model:
     with cols[0]:
         st.metric("ROC-AUC (holdout)", f"{roc_auc_score(y_test, model.predict_proba(X_test)[:,1]):.3f}")
     with cols[1]:
-        st.metric("PR-AUC (holdout)", f"{average_precision_score(y_test, model.predict_proba(X_test)[:,1])::.3f}")
+        st.metric("PR-AUC (holdout)", f"{average_precision_score(y_test, model.predict_proba(X_test)[:,1]):.3f}")
     with cols[2]:
         st.metric("Accuracy (holdout)", f"{accuracy_score(y_test, model.predict(X_test)):.3f}")
 
@@ -355,3 +355,4 @@ with tab_about:
 
 > **Disclaimer:** This is an educational demo and not a medical device or diagnosis.
 """)
+
