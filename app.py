@@ -176,7 +176,12 @@ with tab_explore:
         st.write(f"Positive (Outcome=1): **{pos}**  |  Negative (Outcome=0): **{neg}**")
 
         st.markdown("**Feature Distributions (by Outcome)**")
-        feature = st.selectbox("Choose a feature", num_features, index=num_features.index("Glucose"))
+        feature = st.selectbox(
+            "Choose a feature (Explore)",
+            num_features,
+            index=num_features.index("Glucose"),
+            key="explore_feature"       
+        )
         fig, ax = plt.subplots()
         ax.hist(df[df["Outcome"]==0][feature], bins=30, alpha=0.6, label="Outcome=0")
         ax.hist(df[df["Outcome"]==1][feature], bins=30, alpha=0.6, label="Outcome=1")
@@ -296,7 +301,12 @@ with tab_explain:
         st.info(f"Permutation importance unavailable: {e}")
 
     st.markdown("### Partial Dependence (1D)")
-    pdp_feature = st.selectbox("Choose a feature", num_features, index=num_features.index("Glucose"))
+    pdp_feature = st.selectbox(
+        "Choose a feature (PDP)",
+        num_features,
+        index=num_features.index("Glucose"),
+        key="pdp_feature"              
+    )
     try:
         fig_pdp, axpdp = plt.subplots()
         # PartialDependenceDisplay needs the pipeline to implement predict_proba on raw features
@@ -355,4 +365,5 @@ with tab_about:
 
 > **Disclaimer:** This is an educational demo and not a medical device or diagnosis.
 """)
+
 
